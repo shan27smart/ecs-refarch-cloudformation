@@ -10,12 +10,12 @@ Parameters:
   InstanceType:
     Description: Which instance type should we use to build the ECS cluster?
     Type: String
-    Default: c4.large
+    Default: m5.xlarge
 
   ClusterSize:
     Description: How many ECS hosts do you want to initially deploy?
     Type: Number
-    Default: 4
+    Default: 2
 
   VPC:
     Description: Choose which VPC this ECS cluster should be deployed to
@@ -30,7 +30,7 @@ Parameters:
     Type: AWS::EC2::SecurityGroup::Id
 
   ECSAMI:
-    Description: ECS-Optimized AMI ID
+    Description: ECS-Optimized-AMI
     Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
     Default: /aws/service/ecs/optimized-ami/amazon-linux/recommended/image_id
 
@@ -51,7 +51,7 @@ Resources:
       DesiredCapacity: !Ref ClusterSize
       Tags:
         - Key: Name
-          Value: !Sub ${EnvironmentName} ECS host
+          Value: !Sub ${EnvironmentName}-ECS-Inst
           PropagateAtLaunch: true
     CreationPolicy:
       ResourceSignal:
@@ -72,7 +72,7 @@ Resources:
   ECSLaunchConfiguration:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
-      ImageId: !Ref ECSAMI
+      ImageId: ami-09f42196cbc09c0bb
       InstanceType: !Ref InstanceType
       SecurityGroups:
         - !Ref SecurityGroup

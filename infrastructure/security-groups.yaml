@@ -27,7 +27,7 @@ Resources:
           IpProtocol: -1
       Tags:
         - Key: Name
-          Value: !Sub ${EnvironmentName}-ECS-Hosts
+          Value: !Sub ${EnvironmentName}-ECS-Inst
 
   # This security group defines who/where is allowed to access the Application Load Balancer.
   # By default, we've opened this up to the public internet (0.0.0.0/0) but can you restrict
@@ -39,11 +39,11 @@ Resources:
       GroupDescription: Access to the load balancer that sits in front of ECS
       SecurityGroupIngress:
         # Allow access from anywhere to our ECS services
-        - CidrIp: 0.0.0.0/0
+        - CidrIp: 10.4.0.0/16
           IpProtocol: -1
       Tags:
         - Key: Name
-          Value: !Sub ${EnvironmentName}-LoadBalancers
+          Value: !Sub ${EnvironmentName}-ELB-Int
 
 Outputs:
   ECSHostSecurityGroup:
