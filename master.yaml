@@ -51,8 +51,8 @@ Resources:
       TemplateURL: https://s3.amazonaws.com/ecs-cf-temp-cargo/infrastructure/ecs-cluster.yaml
       Parameters:
         EnvironmentName: !Ref AWS::StackName
-        InstanceType: m5.xlarge
-        ClusterSize: 4
+        InstanceType: m5.large
+        ClusterSize: 2
         VPC: !GetAtt VPC.Outputs.VPC
         SecurityGroup: !GetAtt SecurityGroups.Outputs.ECSHostSecurityGroup
         Subnets: !GetAtt VPC.Outputs.PrivateSubnets
