@@ -52,7 +52,7 @@ Resources:
       Parameters:
         EnvironmentName: !Ref AWS::StackName
         InstanceType: m5.xlarge
-        ClusterSize: 2
+        ClusterSize: 4
         VPC: !GetAtt VPC.Outputs.VPC
         SecurityGroup: !GetAtt SecurityGroups.Outputs.ECSHostSecurityGroup
         Subnets: !GetAtt VPC.Outputs.PrivateSubnets
