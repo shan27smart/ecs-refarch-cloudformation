@@ -21,11 +21,11 @@ Resources:
       TemplateURL: https://s3.amazonaws.com/ecs-cf-temp-cargo/infrastructure/vpc_prod.yaml
       Parameters:
         EnvironmentName: !Ref AWS::StackName
-        VpcCIDR: 10.1.0.0/16
-        PublicSubnet1CIDR: 10.1.1.0/24
-        PublicSubnet2CIDR: 10.1.2.0/24
-        PrivateSubnet1CIDR: 10.1.3.0/24
-        PrivateSubnet2CIDR: 10.1.4.0/24
+        VpcCIDR: 10.4.0.0/16
+        PublicSubnet1CIDR: 10.4.1.0/24
+        PublicSubnet2CIDR: 10.4.2.0/24
+        PrivateSubnet1CIDR: 10.4.3.0/24
+        PrivateSubnet2CIDR: 10.4.4.0/24
 
   SecurityGroups:
     Type: AWS::CloudFormation::Stack
